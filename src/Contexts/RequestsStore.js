@@ -20,7 +20,13 @@ class RequestStore extends Component {
       .doc("hAlXTRnQLhPphs5OUsQ6")
       .collection("Requests")
       .onSnapshot(snapshot => {
-        const requests = handleDataChange(this.state.requests, snapshot);
+        const requestData = handleDataChange(this.state.requests, snapshot);
+        const requests = requestData.map(x => {
+          const timestamp = new Date(1970, 0, 1).setSeconds(
+            x.time_added.seconds
+          );
+          return { ...x, timestamp };
+        });
         this.setState({
           requests,
           markPlayed: id => this.markPlayed(id)

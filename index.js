@@ -4,7 +4,7 @@ var port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log("listening on port 5000");
 });
-if (process.env.NODE_ENV == "production") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static("build"));
   const path = require("path");
   app.get("*", (req, res) => {

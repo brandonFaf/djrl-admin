@@ -7,7 +7,7 @@ TimeAgo.addLocale(en);
 const timeAgo = new TimeAgo("en-US");
 class Requests extends Component {
   state = {
-    filter: false,
+    filter: true,
     sort: "upvotes",
     dir_up_asc: true,
     dir_time_asc: true,

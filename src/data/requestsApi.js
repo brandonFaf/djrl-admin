@@ -8,8 +8,9 @@ export const handleDataChange = (requests, snapshot) => {
 
 export const addRequest = req => {
   const breakdown = req.split("-");
+  const partyName = localStorage.getItem("partyName");
   db.collection("Parties")
-    .doc("hAlXTRnQLhPphs5OUsQ6")
+    .doc(partyName)
     .collection("Requests")
     .add({
       title: breakdown[0].trim(),

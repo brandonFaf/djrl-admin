@@ -62,8 +62,9 @@ class Requests extends Component {
     });
   };
   componentDidMount() {
+    const partyName = localStorage.getItem("partyName");
     db.collection("Parties")
-      .doc("hAlXTRnQLhPphs5OUsQ6")
+      .doc(partyName)
       .collection("Requests")
       .onSnapshot(snapshot => {
         const requestData = handleDataChange(this.state.requests, snapshot);
@@ -88,6 +89,9 @@ class Requests extends Component {
   render() {
     return (
       <>
+        <div>
+          <button onClick={this.props.clearParty}>Chose Different Party</button>
+        </div>
         <p>
           <span>Sort By:</span> <span onClick={this.sortUpvotes}>Upvotes</span>{" "}
           | <span onClick={this.sortTime}>Most Recent</span>

@@ -5,12 +5,12 @@ import "./index.css";
 import firebase from "./data/firebase.js";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import RequestStore from "./Contexts/RequestsStore";
+import ViewStore from "./Contexts/ViewStore";
 
 ReactDOM.render(
-  <RequestStore>
+  <ViewStore>
     <App />
-  </RequestStore>,
+  </ViewStore>,
   document.getElementById("root")
 );
 

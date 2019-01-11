@@ -9,15 +9,12 @@ class RequestStore extends Component {
     this.state = {
       requests: []
     };
-    this.requestsCollection = db
-      .collection("Parties")
-      .doc("hAlXTRnQLhPphs5OUsQ6")
-      .collection("Requests");
   }
 
   componentDidMount() {
+    const partyName = localStorage.getItem("partyName");
     db.collection("Parties")
-      .doc("hAlXTRnQLhPphs5OUsQ6")
+      .doc(partyName)
       .collection("Requests")
       .onSnapshot(snapshot => {
         const requestData = handleDataChange(this.state.requests, snapshot);
@@ -34,8 +31,9 @@ class RequestStore extends Component {
       });
   }
   markPlayed = id => {
+    const partyName = localStorage.getItem("partyName");
     db.collection("Parties")
-      .doc("hAlXTRnQLhPphs5OUsQ6")
+      .doc(partyName)
       .collection("Requests")
       .doc(id)
       .update({
